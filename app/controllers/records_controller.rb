@@ -1,5 +1,6 @@
 class RecordsController < ApplicationController
   before_action :set_record, only: [:show, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   # GET /records
   def index
@@ -47,5 +48,9 @@ class RecordsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def record_params
       params.require(:record).permit(:artist_id, :title, :year)
+    end
+    
+    def record_not_found
+      render json: { error: "Record not found" }, status: :not_found
     end
 end

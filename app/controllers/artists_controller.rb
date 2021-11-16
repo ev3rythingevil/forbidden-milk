@@ -1,5 +1,6 @@
 class ArtistsController < ApplicationController
   before_action :set_artist, only: [:show, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   # GET /artists
   def index
@@ -10,7 +11,8 @@ class ArtistsController < ApplicationController
 
   # GET /artists/1
   def show
-    render json: @artist
+    artist = Artist.find(params[:id])
+    render json: artist
   end
 
   # POST /artists
@@ -47,5 +49,9 @@ class ArtistsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def artist_params
       params.require(:artist).permit(:name, :genre)
+    end
+
+    def record_not_found
+      render json: { error: "Artist not found" }, status: :not_found
     end
 end

@@ -1,5 +1,6 @@
 class UserPressingsController < ApplicationController
   before_action :set_user_pressing, only: [:show, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   # GET /user_pressings
   def index
@@ -47,5 +48,9 @@ class UserPressingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_pressing_params
       params.require(:user_pressing).permit(:user_id)
+    end
+
+    def record_not_found
+      render json: { error: "Pressing not found" }, status: :not_found
     end
 end

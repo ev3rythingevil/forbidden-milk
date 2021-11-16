@@ -1,5 +1,6 @@
 class PressingsController < ApplicationController
   before_action :set_pressing, only: [:show, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   # GET /pressings
   def index
@@ -47,5 +48,9 @@ class PressingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def pressing_params
       params.require(:pressing).permit(:record_id, :weight, :color, :label)
+    end
+
+    def record_not_found
+      render json: { error: "Pressing not found" }, status: :not_found
     end
 end

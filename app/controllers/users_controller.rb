@@ -1,16 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-
-  # GET /users
-  def index
-    @users = User.all
-
-    render json: @users
-  end
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   # GET /users/1
   def show
-    render json: @user
+    user = user.find(session[:user_id])
+    render json: user 
   end
 
   # POST /users
@@ -19,15 +14,6 @@ class UsersController < ApplicationController
 
     if @user.save
       render json: @user, status: :created, location: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /users/1
-  def update
-    if @user.update(user_params)
-      render json: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -47,5 +33,9 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:username, :password_digest)
+    end
+
+    def record_not_found
+      render json: { error: "User not found" }, status: :not_found
     end
 end
