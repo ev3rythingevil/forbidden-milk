@@ -1,0 +1,2 @@
+class UserPressing < ApplicationRecord
+end
