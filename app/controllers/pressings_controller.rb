@@ -6,12 +6,18 @@ class PressingsController < ApplicationController
   def index
     @pressings = Pressing.all
 
-    render json: @pressings
+    render json: @pressings, include: ["user_pressings"]
   end
 
   # GET /pressings/1
   def show
     render json: @pressing
+  end
+
+  def show_user
+    user_pressing_id = UserPressing.find_by(:p)
+    @user_records = Pressing.where("id = ?", user_pressing_id.ids)
+    render json: @user_records
   end
 
   # POST /pressings

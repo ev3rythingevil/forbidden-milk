@@ -5,13 +5,13 @@ class UserPressingsController < ApplicationController
   # GET /user_pressings
   def index
   
-    @user_pressings = UserPressing.select {|pressing| pressing.user_id == session[:user_id]}
-    render json: @user_pressings
+    @user_pressings = UserPressing.where("user_id =?", session[:user_id])
+    render json: @user_pressings, include: ['pressing']
   end
 
   # GET /user_pressings/1
   def show
-    render json: @user_pressing
+    render json: @user_pressings, include: ['pressing', 'record']
   end
 
   # POST /user_pressings

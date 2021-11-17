@@ -6,12 +6,17 @@ class RecordsController < ApplicationController
   def index
     @records = Record.all
 
-    render json: @records
+    render json: @records, include: ['pressings', 'pressings.user_pressings']
   end
 
   # GET /records/1
   def show
-    render json: @record
+    render json: @record, include: ['pressings', 'pressings.user_pressings']
+  end
+
+  def only_user
+    @user_stuff = Record.joins(pressings: :user_pressings)
+    render json: @user_stuff, include: ['pressings', 'pressings.user_pressings']
   end
 
   # POST /records

@@ -4,6 +4,7 @@ import SplashPage from './SplashPage';
 import { useState , useEffect } from 'react';
 import NavBar from './NavBar';
 import UserProfile from './UserProfile';
+import SearchBar from './SearchBar'
 
 function App() {
 
@@ -58,6 +59,7 @@ function doLogOut(){
     <div>
       <NavBar userLogIn={userLogIn} loggedIn={loggedIn} user={user} doLogOut={doLogOut}/>
       <UserProfile />
+      <SearchBar />
     </div>
   )
 

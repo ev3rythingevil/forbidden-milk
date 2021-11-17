@@ -20,7 +20,7 @@ function SearchBar(){
 
     return(
         <>
-        <form onSubmit>
+        <form>
             <label>
                 Search:
                 <br/>    

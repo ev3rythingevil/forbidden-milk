@@ -1,6 +1,18 @@
-function UserCollection(){
+import {useEffect} from 'react'
+
+function UserCollection(userRecords){
+    
+    useEffect(() => {
+        fetch('/user_records')
+        .then(r => r.json())
+        .then(data => console.log(data))
+       
+    }, []);
+    
     return (
-        <h1>Some days I stare into the eternal abyss and pray for a kiss</h1>
+        <div>
+       
+        </div>
     )
 }
 

@@ -1,19 +1,24 @@
 class ArtistsController < ApplicationController
-  before_action :set_artist, only: [:show, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-
+  before_action :force_json, only: :search_bar
   # GET /artists
   def index
-    @artists = Artist.all
+    artists = Artist.all
 
-    render json: @artists
+    render json: artists, include: ['records', 'records.pressings', 'records.pressings.user_pressings']  
+  end
+
+  def search_bar
+    @q = Artist.ransack(params[:q])
+    @artists = @q.result(distinct: true)
   end
 
   # GET /artists/1
   def show
     artist = Artist.find(params[:id])
-    render json: artist
+    render json: artist, include: :records
   end
+
 
   # POST /artists
   def create
@@ -53,5 +58,9 @@ class ArtistsController < ApplicationController
 
     def record_not_found
       render json: { error: "Artist not found" }, status: :not_found
+    end
+
+    def force_json
+      request.format = :json
     end
 end
