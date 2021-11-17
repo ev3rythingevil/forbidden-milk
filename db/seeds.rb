@@ -8,7 +8,7 @@
 
 puts "loading seeds..."
 
-users = User.create([{username: 'Devin', password_digest: '123'}, {username: 'Hathor', password_digest: '123'}])
+users = User.create([{username: 'Devin', password: '123'}, {username: 'Hathor', password: '123'}])
 artists = Artist.create(name: 'Daft Punk', genre: "Dance 😏")
 records = Record.create(artist_id: 1, title: 'Discovery', year: "2001")
 pressings = Pressing.create(record_id: 1, weight: 180, color: "blue", label: "Virgin Records")
