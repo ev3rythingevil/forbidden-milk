@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function NavBar({userLogIn, loggedIn}){
+function NavBar({userLogIn, loggedIn, user, doLogOut}){
     
     const [saveData, setSaveData] = useState({})
     
@@ -14,10 +14,24 @@ function NavBar({userLogIn, loggedIn}){
         e.preventDefault()
         userLogIn(saveData)
     }
- 
     
+    function logOut(e){
+        e.preventDefault()
+        doLogOut()
+    }
+    
+    if (loggedIn)
 
-    
+    return(
+        <div>
+            <h1> WaxStax </h1>
+            <form onSubmit={e=>logOut(e)}>
+                <h2> Hello, {user.username} </h2>
+                <input type="submit" value="Log Out"/>
+            </form>
+        </div>
+    )
+    else
     return(
         <div>
         <h1>WaxStax</h1>
