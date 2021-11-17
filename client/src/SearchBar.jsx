@@ -27,7 +27,16 @@ function SearchBar(){
             <input type="submit" value="Search" />
         </form>
         <div>
-        {results.filter}
+        {results.filter((i) => i.name.includes(searchData))
+        .map((result, index) => {
+            return(
+            <div className="results" key={index}>
+                <h2>{result.name}</h2>
+                <p>{result.genre}</p>
+            </div>    
+            )
+        })
+        }
         </div>
         </>
     )

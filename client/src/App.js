@@ -3,6 +3,7 @@ import './App.css';
 import SplashPage from './SplashPage';
 import { useState , useEffect } from 'react';
 import NavBar from './NavBar';
+import UserProfile from './UserProfile';
 
 function App() {
 
@@ -56,7 +57,7 @@ function doLogOut(){
   return(
     <div>
       <NavBar userLogIn={userLogIn} loggedIn={loggedIn} user={user} doLogOut={doLogOut}/>
-    <h1>Welcome User, here's some stuff to look at</h1>
+      <UserProfile />
     </div>
   )
 
