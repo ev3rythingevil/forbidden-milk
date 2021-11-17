@@ -1,33 +1,38 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 function SearchBar(){
     const [searchData, setSearchData] = useState("")
     const [results, setResults] = useState([])
 
-    const handleChange = (e) => {
-        setSearchData({...searchData,
-        [e.target.name]: e.target.value
-        })
-    } 
-    
-    
-    const handleSubmit = (e) => {
-        fetch('http://localhost:3000/artists')
+    useEffect(()=> {
+        const url = 'http://localhost:4000/artists'
+
+        fetch(url)
         .then(r=>r.json())
         .then(artists => setResults(artists))
-    }
+    }, [])
+
+    const handleChange = (e) => {
+        e.preventDefault()
+        setSearchData(e.target.value.toLowerCase())
+    } 
+    
 
     return(
         <>
-        <form onSubmit={e=> handleSubmit}>
+        <form onSubmit>
             <label>
-                Search artists
-            <input type="text" name="search" placeholder="Search for artists" onChange={(e)=> handleChange(e)}/>
+                Search:
+                <br/>    
+            <input type="text" 
+                name="search" 
+                placeholder="enter artist name here..." 
+                onChange={(e)=> handleChange(e)}/>
             </label>
-            <input type="submit" value="Search" />
         </form>
+        { searchData === "" ? null : 
         <div>
-        {results.filter((i) => i.name.includes(searchData))
+        {results.filter((i) => i.name.toLowerCase().includes(searchData))
         .map((result, index) => {
             return(
             <div className="results" key={index}>
@@ -37,7 +42,7 @@ function SearchBar(){
             )
         })
         }
-        </div>
+        </div>}
         </>
     )
 }

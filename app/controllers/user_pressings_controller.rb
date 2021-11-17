@@ -4,8 +4,8 @@ class UserPressingsController < ApplicationController
 
   # GET /user_pressings
   def index
-    @user_pressings = UserPressing.all
-
+  
+    @user_pressings = UserPressing.select {|pressing| pressing.user_id == session[:user_id]}
     render json: @user_pressings
   end
 
@@ -42,7 +42,7 @@ class UserPressingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_pressing
-      @user_pressing = UserPressing.find(params[:id])
+      @user_pressing = UserPressing.find_by(user_id: session[:user_id])
     end
 
     # Only allow a list of trusted parameters through.
