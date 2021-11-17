@@ -28,7 +28,7 @@ function userLogIn(saveData){
   if (loggedIn)
   return(
     <div>
-      <NavBar userLogIn={userLogIn}/>
+      <NavBar userLogIn={userLogIn} loggedIn={loggedIn}/>
     <h1>Welcome User, here's some stuff to look at</h1>
     </div>
   )
@@ -36,7 +36,7 @@ function userLogIn(saveData){
   else /* no user logged in */
     return (
       <div>
-        <NavBar userLogIn={userLogIn}/>
+        <NavBar userLogIn={userLogIn} loggedIn={loggedIn}/>
         <SplashPage />
       </div>
     );

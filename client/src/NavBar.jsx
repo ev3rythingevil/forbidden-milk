@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function NavBar({userLogIn}){
+function NavBar({userLogIn, loggedIn}){
     
     const [saveData, setSaveData] = useState({})
     

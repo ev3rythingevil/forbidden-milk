@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-
+  # skip_before_action :authorized, only: [:create]
   # GET /users/1
   def show
     user = user.find(session[:user_id])
