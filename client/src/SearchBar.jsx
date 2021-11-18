@@ -37,7 +37,7 @@ function SearchBar(){
         {results.filter((i) => i.name.toLowerCase().includes(searchData))
         .map((result, index) => {
             return(
-            <Stack direction="horizontal" gap={2} key={index}>
+            <Stack className="text-center" direction="horizontal" gap={2} key={index}>
                 <h2 className='m-2 2 2 2'>{result.name}
                 <br/>
                     <h4 className='m-2 2 2 2'>

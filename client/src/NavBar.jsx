@@ -28,9 +28,9 @@ function NavBar({userLogIn, loggedIn, user, doLogOut}){
             
         <Navbar>
             <Stack direction="vertical" gap={3}>
-            <h1 className="m-5 5 5 5"> WaxStax </h1>
-            <form className="mt 5" onSubmit={e=>logOut(e)}>
-                <h2> Hello, {user.username} </h2>
+            <h1 className="text-center"> WaxStax </h1>
+            <form className="mt 5 text-center" onSubmit={e=>logOut(e)}>
+                <h3> Hello, {user.username} </h3>
                 <input type="submit" value="Log Out"/>
                 <SearchBar />
             </form>
@@ -43,8 +43,8 @@ function NavBar({userLogIn, loggedIn, user, doLogOut}){
     return(
         <Navbar>
         <Stack direction="vertical" gap={3}>
-        <h1 className="m-3 3 3 3">WaxStax</h1>
-        <form className="m-5 5 5 5" onSubmit={e => logInData(e)}>
+        <h1 className="text-center">WaxStax</h1>
+        <form className="m-5 5 5 5 text-center" onSubmit={e => logInData(e)}>
             <label>
                 Username:
                 <input type="text" name="username" onChange={(e)=> handleChange(e)}/>

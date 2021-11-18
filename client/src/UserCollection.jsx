@@ -1,4 +1,5 @@
 import {useEffect} from 'react'
+import Card from 'react-bootstrap/Card'
 
 function UserCollection({record , pressings}){
     
@@ -9,9 +10,10 @@ function UserCollection({record , pressings}){
     
     return (
         <div>
-       <h1>{record.title} - {record.artist.name}</h1>
-       <h3>Pressings</h3>
-       <h4>{pressing.map(p => <h4>Weight: {p.weight} Color: {p.color} Label: {p.label}</h4>)}</h4>
+       <Card><h4>{record.title} - {record.artist.name}</h4>
+       <h4><strong>Pressings</strong></h4>
+       <p>{pressing.map(p => <h4>Weight: {p.weight} Color: {p.color} Label: {p.label}</h4>)}</p>
+       </Card>
        </div>
     )
 }
