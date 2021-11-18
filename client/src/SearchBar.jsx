@@ -2,17 +2,9 @@ import {useEffect, useState} from 'react'
 import Stack from 'react-bootstrap/Stack'
 import Card from 'react-bootstrap/Card'
 
-function SearchBar(){
+function SearchBar({results}){
     const [searchData, setSearchData] = useState("")
-    const [results, setResults] = useState([])
 
-    useEffect(()=> {
-        const url = 'http://localhost:4000/artists'
-
-        fetch(url)
-        .then(r=>r.json())
-        .then(artists => setResults(artists))
-    }, [])
 
     const handleChange = (e) => {
         e.preventDefault()

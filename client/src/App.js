@@ -16,14 +16,18 @@ function App() {
   // states 
 const [user, setUser] = useState([])
 const [loggedIn, setLoggedIn] = useState(false)
-
-// consts/variables
-
-
-
-
+const [results, setResults] = useState()
 
 // useEffects/inits
+useEffect(()=> {
+    const url = 'http://localhost:4000/artists'
+
+    fetch(url)
+    .then(r=>r.json())
+    .then(artists => setResults(artists))
+}, [])
+
+
   useEffect(()=> {
     fetch("/me").then((r) => {
       if (r.ok) {
@@ -72,6 +76,7 @@ function doLogOut(){
       loggedIn={loggedIn} 
       user={user} 
       doLogOut={doLogOut}
+      results={results}
       />
       </Container>
       <UserProfile user={user}/>
@@ -84,7 +89,9 @@ function doLogOut(){
   else /* no user logged in */
     return (
       <div>
-        <NavBar userLogIn={userLogIn} loggedIn={loggedIn} />
+        <NavBar userLogIn={userLogIn} 
+        loggedIn={loggedIn} 
+        results={results}/>
       </div>
     );
   }
