@@ -22,7 +22,7 @@ function SearchBar(){
 
     return(
         <>
-        <form>
+        <form className="m-5 5 5 5">
             <label>
                 Search:
                 <br/>    
@@ -33,38 +33,33 @@ function SearchBar(){
             </label>
         </form>
         { searchData === "" ? null : 
-        <div>
+        <Stack direction="horizontal" gap={1}>
         {results.filter((i) => i.name.toLowerCase().includes(searchData))
         .map((result, index) => {
             return(
-            <Stack className="text-center" direction="horizontal" gap={2} key={index}>
-                <h2 className='m-2 2 2 2'>{result.name}
+            <div key={index}>
+                <Card className="text-center" style={{ width: '18rem' }} className="text-center">
+                <h2>{result.name}
                 <br/>
-                    <h4 className='m-2 2 2 2'>
+                    <h5 className='m-2 2 2 2'>
                         {result.genre}
-                    </h4>
+                    </h5>
                 </h2>
-                <Card>{result.records.map(record=>
+                
+                <div style={{ width: '18rem' }}>{result.records.map(record=>
                     <ul>
-                     <li>{record.title} ({record.year})</li>
+                     <p><strong>{record.title} ({record.year})</strong></p>
                      <button>Add to my collection!</button>
                     </ul>
                         )}
-                    <p>{result.pressings.map(pressing=>
-                    <ul>
-                        <p>weight: {pressing.weight} oz
-                            <br/>
-                           color: {pressing.color}
-                            <br/>
-                           label: {pressing.label}</p>
-                    </ul>
-                )}</p>
+                  
+                </div>
                 </Card>
-            </Stack>    
+            </div>    
             )
         })
         }
-        </div>}
+        </Stack>}
         </>
     )
 }
