@@ -38,7 +38,23 @@ function SearchBar(){
             return(
             <div className="results" key={index}>
                 <h2>{result.name}</h2>
-                <p>{result.genre}</p>
+                <h3>{result.genre}</h3>
+                <h4>{result.records.map(record=>
+                    <ul>
+                     <li>{record.title} ({record.year})</li>
+                     <button>Add to my collection!</button>
+                    </ul>
+                        )}
+                    <p>{result.pressings.map(pressing=>
+                    <ul>
+                        <p>weight: {pressing.weight} oz
+                            <br/>
+                           color: {pressing.color}
+                            <br/>
+                           label: {pressing.label}</p>
+                    </ul>
+                )}</p>
+                </h4>
             </div>    
             )
         })
