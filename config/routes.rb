@@ -7,9 +7,6 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:create, :show, :destroy, :update]
 
-  get "/user_records", to: "records#only_user"
-
-
   # login logic
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"

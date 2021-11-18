@@ -1,17 +1,10 @@
 import {useEffect} from 'react'
 
-function UserCollection(userRecords){
-    
-    useEffect(() => {
-        fetch('/user_records')
-        .then(r => r.json())
-        .then(data => console.log(data))
-       
-    }, []);
-    
+function UserCollection(user){
+
     return (
         <div>
-       
+       {/* {user.user_pressings.map(pressing => <li>{pressing.title}</li>)} */}
         </div>
     )
 }

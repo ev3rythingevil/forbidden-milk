@@ -14,14 +14,6 @@ class RecordsController < ApplicationController
     render json: @record, include: ['pressings', 'pressings.user_pressings']
   end
 
-  def only_user
-    @user_things = Record.includes(:user_pressings)
-    .where(user_pressings: {user_id: session[:user_id]})
-    byebug
-    # @user_stuff = @user_things.where(user_id: session[:user_id])
-    render json: @user_things, include: ['pressings', 'pressings.user_pressings']
-  end
-
   # POST /records
   def create
     @record = Record.new(record_params)

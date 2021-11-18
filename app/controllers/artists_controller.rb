@@ -5,7 +5,7 @@ class ArtistsController < ApplicationController
   def index
     artists = Artist.all
 
-    render json: artists, include: ['records', 'records.pressings', 'records.pressings.user_pressings']  
+    render json: artists, include: ['records']  
   end
 
   def search_bar

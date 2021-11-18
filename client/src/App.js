@@ -58,7 +58,7 @@ function doLogOut(){
   return(
     <div>
       <NavBar userLogIn={userLogIn} loggedIn={loggedIn} user={user} doLogOut={doLogOut}/>
-      <UserProfile />
+      <UserProfile user={user}/>
       <SearchBar />
     </div>
   )
