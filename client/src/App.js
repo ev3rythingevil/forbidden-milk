@@ -6,6 +6,8 @@ import NavBar from './NavBar';
 import UserProfile from './UserProfile';
 
 
+
+
 function App() {
 
   // states 
@@ -57,7 +59,11 @@ function doLogOut(){
   if (loggedIn)
   return(
     <div>
-      <NavBar userLogIn={userLogIn} loggedIn={loggedIn} user={user} doLogOut={doLogOut}/>
+      <NavBar userLogIn={userLogIn} 
+      loggedIn={loggedIn} 
+      user={user} 
+      doLogOut={doLogOut}
+      />
       <UserProfile user={user}/>
       
     </div>

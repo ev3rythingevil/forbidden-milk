@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-
+import {Button} from 'react-bootstrap'
 
 function SearchBar(){
     const [searchData, setSearchData] = useState("")
@@ -21,7 +21,7 @@ function SearchBar(){
 
     return(
         <>
-        <form>
+        <form className ='m-5 5 5 5'>
             <label>
                 Search:
                 <br/>    
@@ -37,7 +37,7 @@ function SearchBar(){
         .map((result, index) => {
             return(
             <div className="results" key={index}>
-                <h2>{result.name}</h2>
+                <h2 className='m-2-2-2-2'>{result.name}</h2>
                 <h3>{result.genre}</h3>
                 <h4>{result.records.map(record=>
                     <ul>
