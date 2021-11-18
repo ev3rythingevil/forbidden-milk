@@ -5,6 +5,8 @@ import { useState , useEffect } from 'react';
 import NavBar from './NavBar';
 import UserProfile from './UserProfile';
 
+import Stack from "react-bootstrap/Stack"
+import Container from 'react-bootstrap/Container'
 
 
 
@@ -58,12 +60,15 @@ function doLogOut(){
 
   if (loggedIn)
   return(
-    <div>
+   
+    <div className='bg-light-border'>
+      <Container className="p-3">
       <NavBar userLogIn={userLogIn} 
       loggedIn={loggedIn} 
       user={user} 
       doLogOut={doLogOut}
       />
+      </Container>
       <UserProfile user={user}/>
       
     </div>

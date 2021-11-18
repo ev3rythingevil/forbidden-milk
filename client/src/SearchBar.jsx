@@ -21,7 +21,7 @@ function SearchBar(){
 
     return(
         <>
-        <form className ='m-5 5 5 5'>
+        <form>
             <label>
                 Search:
                 <br/>    

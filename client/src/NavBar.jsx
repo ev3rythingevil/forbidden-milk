@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import SearchBar from './SearchBar'
-import { Navbar } from 'react-bootstrap'
+import { Navbar, Stack } from 'react-bootstrap'
 
 function NavBar({userLogIn, loggedIn, user, doLogOut}){
     
@@ -25,14 +25,16 @@ function NavBar({userLogIn, loggedIn, user, doLogOut}){
     if (loggedIn)
 
     return(
-        
-            <Navbar fixed="top" className = "m-3" >
-            <h1> WaxStax </h1>
-            <form onSubmit={e=>logOut(e)}>
+            
+        <Navbar>
+            <Stack direction="vertical" gap={3}>
+            <h1 className="m-5 5 5 5"> WaxStax </h1>
+            <form className="mt 5" onSubmit={e=>logOut(e)}>
                 <h2> Hello, {user.username} </h2>
                 <input type="submit" value="Log Out"/>
                 <SearchBar />
             </form>
+            </Stack>
         </Navbar>
         
        
