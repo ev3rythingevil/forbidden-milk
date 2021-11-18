@@ -4,9 +4,10 @@ import SplashPage from './SplashPage';
 import { useState , useEffect } from 'react';
 import NavBar from './NavBar';
 import UserProfile from './UserProfile';
-import { Outlet, Link } from "react-router-dom";
+import { Routes, Route, Outlet, Switch } from "react-router-dom";
 import Stack from "react-bootstrap/Stack";
 import Container from 'react-bootstrap/Container';
+import ArtistProfile from './ArtistProfile'
 
 
 
@@ -17,6 +18,10 @@ const [user, setUser] = useState([])
 const [loggedIn, setLoggedIn] = useState(false)
 
 // consts/variables
+
+
+
+
 
 // useEffects/inits
   useEffect(()=> {
@@ -70,7 +75,9 @@ function doLogOut(){
       />
       </Container>
       <UserProfile user={user}/>
-      
+    <Routes>
+      <Route path="artists" element={<ArtistProfile />}/>
+    </Routes>  
     </div>
   )
 
