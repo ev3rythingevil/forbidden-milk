@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 
+
 function SearchBar(){
     const [searchData, setSearchData] = useState("")
     const [results, setResults] = useState([])

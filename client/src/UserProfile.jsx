@@ -1,14 +1,14 @@
-import { useEffect, useState} from 'react'
+// import { useEffect, useState} from 'react'
 import UserCollection from './UserCollection'
 
-function UserProfile(user){
+function UserProfile({user}){
     
-    const [userRecords, setUserRecords] = useState([])
-    
+    const records = user.records
+    console.log(records)
     return(
         <div>
-        <h1>People are strange, when you're a stranger</h1>
-        <UserCollection user={user}/>
+        <h1>{user.username}'s Stax of Wax</h1>
+        {records.map(record => <UserCollection record={record} pressings={user.pressings} artists={user.artists}/>)}
         </div>
     )
 }

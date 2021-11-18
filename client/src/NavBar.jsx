@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SearchBar from './SearchBar'
 
 function NavBar({userLogIn, loggedIn, user, doLogOut}){
     
@@ -28,6 +29,7 @@ function NavBar({userLogIn, loggedIn, user, doLogOut}){
             <form onSubmit={e=>logOut(e)}>
                 <h2> Hello, {user.username} </h2>
                 <input type="submit" value="Log Out"/>
+                <SearchBar />
             </form>
         </div>
     )
@@ -45,6 +47,7 @@ function NavBar({userLogIn, loggedIn, user, doLogOut}){
                 <input type="text" name="password" onChange={(e)=> handleChange(e)}/>
             </label>
             <input type="submit" value="Log In"/>
+            <SearchBar />
         </form>
         </div>
 
