@@ -42,19 +42,22 @@ function NavBar({userLogIn, loggedIn, user, doLogOut}){
     else
     return(
         <Navbar>
-        <h1>WaxStax</h1>
-        <form onSubmit={e => logInData(e)}>
+        <Stack direction="vertical" gap={3}>
+        <h1 className="m-3 3 3 3">WaxStax</h1>
+        <form className="m-5 5 5 5" onSubmit={e => logInData(e)}>
             <label>
                 Username:
                 <input type="text" name="username" onChange={(e)=> handleChange(e)}/>
             </label>
+            <span>    </span>
             <label>
                 Password:
                 <input type="text" name="password" onChange={(e)=> handleChange(e)}/>
             </label>
             <input type="submit" value="Log In"/>
-            <SearchBar />
+            <SearchBar/>
         </form>
+        </Stack>
         </Navbar>
 
     )

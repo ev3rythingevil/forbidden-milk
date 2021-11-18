@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
-import {Button} from 'react-bootstrap'
+import Stack from 'react-bootstrap/Stack'
+import Card from 'react-bootstrap/Card'
 
 function SearchBar(){
     const [searchData, setSearchData] = useState("")
@@ -36,10 +37,14 @@ function SearchBar(){
         {results.filter((i) => i.name.toLowerCase().includes(searchData))
         .map((result, index) => {
             return(
-            <div className="results" key={index}>
-                <h2 className='m-2-2-2-2'>{result.name}</h2>
-                <h3>{result.genre}</h3>
-                <h4>{result.records.map(record=>
+            <Stack direction="horizontal" gap={2} key={index}>
+                <h2 className='m-2 2 2 2'>{result.name}
+                <br/>
+                    <h4 className='m-2 2 2 2'>
+                        {result.genre}
+                    </h4>
+                </h2>
+                <Card>{result.records.map(record=>
                     <ul>
                      <li>{record.title} ({record.year})</li>
                      <button>Add to my collection!</button>
@@ -54,8 +59,8 @@ function SearchBar(){
                            label: {pressing.label}</p>
                     </ul>
                 )}</p>
-                </h4>
-            </div>    
+                </Card>
+            </Stack>    
             )
         })
         }
