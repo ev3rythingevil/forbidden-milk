@@ -10,8 +10,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
   crossorigin="anonymous"
 />
 
-
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
