@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react'
 import Stack from 'react-bootstrap/Stack'
 import Card from 'react-bootstrap/Card'
+import { Routes, Link, Route, useNavigate } from "react-router-dom";
+import ArtistProfile from './ArtistProfile'
 
 function SearchBar({results}){
     const [searchData, setSearchData] = useState("")
@@ -10,7 +12,13 @@ function SearchBar({results}){
         e.preventDefault()
         setSearchData(e.target.value.toLowerCase())
     } 
-    
+
+    const ParamsExample = () => (
+        <Routes>
+            <Route exact path="/" component={ArtistProfile} />
+            <Route path="/artists/:id" />
+        </Routes>
+      )
 
     return(
         <>
@@ -29,9 +37,10 @@ function SearchBar({results}){
         {results.filter((i) => i.name.toLowerCase().includes(searchData))
         .map((result, index) => {
             return(
-            <div key={index}>
+            <div key={result.id}>
                 <Card className="text-center" style={{ width: '18rem' }} className="text-center">
-                <h2>{result.name}
+                <h2>
+                <Link to={`/artists/${result.id}`}>{result.name}</Link>
                 <br/>
                     <h5 className='m-2 2 2 2'>
                         {result.genre}
