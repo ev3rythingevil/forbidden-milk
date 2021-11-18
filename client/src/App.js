@@ -4,9 +4,9 @@ import SplashPage from './SplashPage';
 import { useState , useEffect } from 'react';
 import NavBar from './NavBar';
 import UserProfile from './UserProfile';
-
-import Stack from "react-bootstrap/Stack"
-import Container from 'react-bootstrap/Container'
+import { Outlet, Link } from "react-router-dom";
+import Stack from "react-bootstrap/Stack";
+import Container from 'react-bootstrap/Container';
 
 
 

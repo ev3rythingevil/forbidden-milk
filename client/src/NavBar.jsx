@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import SearchBar from './SearchBar'
 import { Navbar, Stack } from 'react-bootstrap'
-
+import { Link, Outlet } from 'react-router-dom'
 function NavBar({userLogIn, loggedIn, user, doLogOut}){
     
     const [saveData, setSaveData] = useState({})
@@ -29,12 +29,15 @@ function NavBar({userLogIn, loggedIn, user, doLogOut}){
         <Navbar>
             <Stack direction="vertical" gap={3}>
             <h1 className="text-center"> WaxStax </h1>
+            <Link to="/artists">Artists</Link>
+            <Link to="/me">My Profile</Link>
             <form className="mt 5 text-center" onSubmit={e=>logOut(e)}>
                 <h3> Hello, {user.username} </h3>
                 <input type="submit" value="Log Out"/>
                 <SearchBar />
             </form>
             </Stack>
+            
         </Navbar>
         
        
