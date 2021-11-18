@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def show
     
     user = User.find(session[:user_id])
-    render json: user, include: ["user_pressings", "records"]
+    render json: user, include: ["user_pressings", "records", "pressings"]
   end
 
   # POST /users
