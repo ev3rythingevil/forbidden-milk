@@ -5,7 +5,7 @@ function UserCollection({record , pressings}){
     console.log(record)
     console.log(pressings)
     const pressing = pressings.filter(p => p.record_id === record.id)
-    console.log(record.artist.name)
+    
     
     return (
         <div>

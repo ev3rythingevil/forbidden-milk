@@ -8,7 +8,7 @@ function UserProfile({user}){
     return(
         <div>
         <h1>{user.username}'s Stax of Wax</h1>
-        {records.map(record => <UserCollection record={record} pressings={user.pressings} artists={user.artists}/>)}
+        {records.map(record => <UserCollection record={record} pressings={user.pressings}/>)}
         </div>
     )
 }
