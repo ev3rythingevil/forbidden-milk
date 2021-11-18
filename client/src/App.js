@@ -4,7 +4,7 @@ import SplashPage from './SplashPage';
 import { useState , useEffect } from 'react';
 import NavBar from './NavBar';
 import UserProfile from './UserProfile';
-import { Routes, Route, Outlet, Switch } from "react-router-dom";
+import { Routes, Route, Outlet, useNavigate } from "react-router-dom";
 import Stack from "react-bootstrap/Stack";
 import Container from 'react-bootstrap/Container';
 import ArtistProfile from './ArtistProfile'
@@ -17,7 +17,7 @@ function App() {
 const [user, setUser] = useState([])
 const [loggedIn, setLoggedIn] = useState(false)
 const [results, setResults] = useState()
-
+const history = useNavigate()
 // useEffects/inits
 useEffect(()=> {
     const url = 'http://localhost:4000/artists'
@@ -61,7 +61,8 @@ function doLogOut(){
   })
   .then(()=>{
     setLoggedIn(!loggedIn)
-    setUser({})
+    setUser([])
+    history('/')
   })
 }
   
@@ -79,9 +80,10 @@ function doLogOut(){
       results={results}
       />
       </Container>
-      <UserProfile user={user}/>
     <Routes>
-      <Route path="artists" element={<ArtistProfile />}/>
+      <Route path='/' element={<SplashPage />} />
+      <Route path='/me' element={<UserProfile user={user}/>} />
+      <Route path="/artists" element={<ArtistProfile />}/>
     </Routes>  
     </div>
   )
