@@ -8,7 +8,7 @@ import { Routes, Route, Outlet, useNavigate } from "react-router-dom";
 import Stack from "react-bootstrap/Stack";
 import Container from 'react-bootstrap/Container';
 import ArtistProfile from './ArtistProfile'
-
+import ArtistList from './ArtistList';
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
   // states 
 const [user, setUser] = useState([])
 const [loggedIn, setLoggedIn] = useState(false)
-const [results, setResults] = useState()
+const [results, setResults] = useState([])
 const history = useNavigate()
 // useEffects/inits
 useEffect(()=> {
@@ -83,7 +83,8 @@ function doLogOut(){
     <Routes>
       <Route path='/' element={<SplashPage />} />
       <Route path='/me' element={<UserProfile user={user}/>} />
-      <Route path="/artists" element={<ArtistProfile />}/>
+      <Route path="/artists" element={<ArtistList results={results}/>}/>
+      
     </Routes>  
     </div>
   )
@@ -94,6 +95,10 @@ function doLogOut(){
         <NavBar userLogIn={userLogIn} 
         loggedIn={loggedIn} 
         results={results}/>
+         <Routes>
+      <Route path='/' element={<SplashPage />} />
+      <Route path="/artists" element={<ArtistList results={results}/>}/>
+    </Routes>  
       </div>
     );
   }

@@ -22,13 +22,14 @@ function NavBar({userLogIn, loggedIn, user, doLogOut, results}){
         doLogOut()
     }
     
+    
     if (loggedIn)
 
     return(
             
         <Navbar>
             <Stack direction="vertical" gap={3}>
-            <h1 className="text-center"> WaxStax </h1>
+            <h1 className="text-center"> <Link to='/'>WaxStax</Link> </h1>
             <Link to="/artists">Artists</Link>
             <Link to="/me">My Profile</Link>
             <form className="mt 5 text-center" onSubmit={e=>logOut(e)}>
@@ -46,7 +47,8 @@ function NavBar({userLogIn, loggedIn, user, doLogOut, results}){
     return(
         <Navbar>
         <Stack direction="vertical" gap={3}>
-        <h1 className="text-center">WaxStax</h1>
+        <h1 className="text-center"><Link to='/'>WaxStax</Link></h1>
+            <Link to="/artists">Artists</Link>
         <form className="m-5 5 5 5 text-center" onSubmit={e => logInData(e)}>
             <label>
                 Username:

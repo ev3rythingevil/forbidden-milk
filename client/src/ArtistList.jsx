@@ -1,10 +1,13 @@
-function ArtistList(){
+import {Link} from 'react-router-dom'
+
+
+function ArtistList({results}){
 
 return(
-    <h1>Ohaiyo</h1>
+    <>
+    {results.map(a => <Link to='/artists/:id'>{a.name}</Link>)}
+    </>
 )
-
-
 }
 
 export default ArtistList
