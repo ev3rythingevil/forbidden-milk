@@ -113,7 +113,7 @@ const createPressing = (record) => {
       <Route path='/' element={<SplashPage />} />
       <Route path='/me' element={<UserProfile user={user}/>} />
       <Route path="/artists" element={<ArtistList results={results}/>}/>
-      
+      <Route path='/artists/:id' element={<ArtistProfile results={results}/>}/>
     </Routes>  
     </div>
   )

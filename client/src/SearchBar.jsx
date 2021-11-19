@@ -44,7 +44,7 @@ function SearchBar({results , createPressing, addToCollection}){
             <div key={result.id}>
                 <Card className="text-center" style={{ width: '20rem' }, { height: '20rem'}} className="text-center">
                 <h2>
-                <Link to={`/artistprofile/${result.id}`} component={ArtistProfile}>{result.name}</Link>
+                <Link to={`/artists/${result.id}`} component={ArtistProfile}>{result.name}</Link>
                 <br/>
                     <h5 className='m-2 2 2 2'>
                         {result.genre}
