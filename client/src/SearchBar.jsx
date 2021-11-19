@@ -46,14 +46,15 @@ function SearchBar({results , createPressing, addToCollection, setSelectedArtist
             
                 <h2>
                 <Link to={`/artists/${result.id}`} component={ArtistProfile}>
-                <Button onClick={()=>setSelectedArtist(result.id)}>{result.name}</Button>
+                <Button 
+                    className="align-items-center"
+                    variant="outline-dark"
+                    onClick={()=>setSelectedArtist(result.id)}>
+                        {result.name}
+                </Button>
                 </Link>
-                <br/>
-                    <h5 className='m-2 2 2 2'>
-                        {result.genre}
-                    </h5>
                 </h2>
-                
+                             
                 <div style={{display: "flex"}}>{result.records.map(record =>
                     <ul>
                      <p className="justify-content-center">
