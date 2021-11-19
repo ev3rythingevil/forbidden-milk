@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import Stack from 'react-bootstrap/Stack'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import Image from 'react-bootstrap/Image'
 import { Routes, Link, Route, useNavigate } from "react-router-dom";
 import ArtistProfile from './ArtistProfile'
 
@@ -62,7 +63,7 @@ function SearchBar({results}){
             <div key={result.id}>
                 <Card className="text-center" style={{ width: '20rem' }, { height: '20rem'}} className="text-center">
                 <h2>
-                <Link to={`/artists/${result.id}`}>{result.name}</Link>
+                <Link to={`/artistprofile/${result.id}`} component={ArtistProfile}>{result.name}</Link>
                 <br/>
                     <h5 className='m-2 2 2 2'>
                         {result.genre}
@@ -72,6 +73,8 @@ function SearchBar({results}){
                 <div style={{ width: '20rem' }}>{result.records.map(record =>
                     <ul>
                      <p className="text-center">
+                         <Image src={record.image} thumbnail style={{ width: '10rem' }, { height: '10rem'}}/>
+                         <br/>
                          <strong>{record.title} 
                          <br/>
                          ({record.year})</strong>
