@@ -13,12 +13,33 @@ function SearchBar({results}){
         setSearchData(e.target.value.toLowerCase())
     } 
 
-    const ParamsExample = () => (
-        <Routes>
-            <Route exact path="/" component={ArtistProfile} />
-            <Route path="/artists/:id" />
-        </Routes>
-      )
+    const handleClick = (e, record) => {
+        e.preventDefault()
+        createPressing(record)   
+    }
+
+    const createPressing = (record) => {
+        fetch('http://localhost:4000/pressings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                record_id: record.id,
+                weight: 180,
+                color: 'unknown',
+                label: 'unknown'
+            })
+        }) 
+            .then(r => r.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch((error)=> {
+                console.error('Error:', error)
+            })
+        
+    }
 
     return(
         <>
@@ -47,10 +68,11 @@ function SearchBar({results}){
                     </h5>
                 </h2>
                 
-                <div style={{ width: '18rem' }}>{result.records.map(record=>
+                <div style={{ width: '18rem' }}>{result.records.map(record =>
                     <ul>
-                     <p><strong>{record.title} ({record.year})</strong></p>
-                     <button>Add to my collection!</button>
+                     <p><strong>{record.title} ({record.year})</strong>
+                     <button onClick={e =>handleClick(e, record)}>Add to my collection!</button>
+                     </p>
                     </ul>
                         )}
                   

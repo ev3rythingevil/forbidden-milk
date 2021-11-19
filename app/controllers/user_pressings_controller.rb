@@ -16,13 +16,8 @@ class UserPressingsController < ApplicationController
 
   # POST /user_pressings
   def create
-    @user_pressing = UserPressing.new(user_pressing_params)
-
-    if @user_pressing.save
-      render json: @user_pressing, status: :created, location: @user_pressing
-    else
-      render json: @user_pressing.errors, status: :unprocessable_entity
-    end
+    @user_pressing = UserPressing.create(user_pressing_params)
+    render json: @user_pressing, status: :created, location: @user_pressing
   end
 
   # PATCH/PUT /user_pressings/1
@@ -47,7 +42,7 @@ class UserPressingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_pressing_params
-      params.require(:user_pressing).permit(:user_id)
+      params.permit(:user_id)
     end
 
     def record_not_found

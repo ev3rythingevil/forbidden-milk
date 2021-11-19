@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :user_pressings, only: [:index, :create, :show, :destroy, :update]
+  resources :user_pressings
   resources :pressings
   resources :records
   resources :artists do

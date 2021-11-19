@@ -22,13 +22,9 @@ class PressingsController < ApplicationController
 
   # POST /pressings
   def create
-    @pressing = Pressing.new(pressing_params)
-
-    if @pressing.save
-      render json: @pressing, status: :created, location: @pressing
-    else
-      render json: @pressing.errors, status: :unprocessable_entity
-    end
+    @pressing = Pressing.create(pressing_params)
+    UserPressing.create(user_id: session[:user_id], pressing_id: @pressing.id)
+    render json: @pressing, status: :created
   end
 
   # PATCH/PUT /pressings/1
@@ -53,7 +49,7 @@ class PressingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pressing_params
-      params.require(:pressing).permit(:record_id, :weight, :color, :label)
+      params.permit(:record_id, :weight, :color, :label)
     end
 
     def record_not_found
