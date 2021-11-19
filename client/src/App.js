@@ -17,6 +17,7 @@ function App() {
 const [user, setUser] = useState([])
 const [loggedIn, setLoggedIn] = useState(false)
 const [results, setResults] = useState([])
+const [selectedArtist, setSelectedArtist] = useState()
 
 const history = useNavigate()
 // useEffects/inits
@@ -107,13 +108,14 @@ const createPressing = (record) => {
       user={user} 
       doLogOut={doLogOut}
       results={results}
+      setSelectedArtist={setSelectedArtist}
       />
       </Container>
     <Routes>
       <Route path='/' element={<SplashPage />} />
       <Route path='/me' element={<UserProfile user={user}/>} />
       <Route path="/artists" element={<ArtistList results={results}/>}/>
-      <Route path='/artists/:id' element={<ArtistProfile results={results}/>}/>
+      <Route path='/artists/:id' element={<ArtistProfile selectedArtist= {selectedArtist} results={results}/>}/>
     </Routes>  
     </div>
   )
@@ -124,7 +126,8 @@ const createPressing = (record) => {
         <NavBar userLogIn={userLogIn} 
          createPressing={createPressing}
         loggedIn={loggedIn} 
-        results={results}/>
+        results={results}
+        setSelectedArtist={setSelectedArtist}/>
          <Routes>
       <Route path='/' element={<SplashPage />} />
       <Route path="/artists" element={<ArtistList results={results}/>}/>

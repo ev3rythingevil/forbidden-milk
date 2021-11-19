@@ -6,7 +6,7 @@ import Image from 'react-bootstrap/Image'
 import { Routes, Link, Route, useNavigate } from "react-router-dom";
 import ArtistProfile from './ArtistProfile'
 
-function SearchBar({results , createPressing, addToCollection}){
+function SearchBar({results , createPressing, addToCollection, setSelectedArtist}){
     const [searchData, setSearchData] = useState("")
 
 
@@ -45,7 +45,9 @@ function SearchBar({results , createPressing, addToCollection}){
             <div key={result.id} style={{display: "flex"}}>
             
                 <h2>
-                <Link to={`/artists/${result.id}`} component={ArtistProfile}>{result.name}</Link>
+                <Link to={`/artists/${result.id}`} component={ArtistProfile}>
+                <Button onClick={()=>setSelectedArtist(result.id)}>{result.name}</Button>
+                </Link>
                 <br/>
                     <h5 className='m-2 2 2 2'>
                         {result.genre}
