@@ -6,7 +6,7 @@ import Image from 'react-bootstrap/Image'
 import { Routes, Link, Route, useNavigate } from "react-router-dom";
 import ArtistProfile from './ArtistProfile'
 
-function SearchBar({results , createPressing}){
+function SearchBar({results , createPressing, addToCollection}){
     const [searchData, setSearchData] = useState("")
 
 
@@ -17,7 +17,9 @@ function SearchBar({results , createPressing}){
 
     const handleClick = (e, record) => {
         e.preventDefault()
-        createPressing(record)   
+        //createPressing(record)
+        // console.log(pressingInfo)
+        addToCollection(record)   
     }
 
    

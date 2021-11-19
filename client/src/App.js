@@ -67,6 +67,10 @@ function doLogOut(){
   })
 }
 
+function addToCollection(record){
+  console.log(record)
+}
+
 const createPressing = (record) => {
   fetch('http://localhost:4000/pressings', {
       method: 'POST',
@@ -97,7 +101,8 @@ const createPressing = (record) => {
     <div className='bg-light-border'>
       <Container className="p-3">
       <NavBar userLogIn={userLogIn}
-       createPressing={createPressing} 
+        createPressing={createPressing} 
+        addToCollection={addToCollection} 
       loggedIn={loggedIn} 
       user={user} 
       doLogOut={doLogOut}
