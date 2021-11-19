@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import SearchBar from './SearchBar'
-import { Navbar, Stack } from 'react-bootstrap'
+import { Navbar, Stack, Form } from 'react-bootstrap'
 import { Link, Outlet } from 'react-router-dom'
 function NavBar({userLogIn, loggedIn, user, doLogOut, results}){
     
@@ -32,11 +32,11 @@ function NavBar({userLogIn, loggedIn, user, doLogOut, results}){
             <h1 className="text-center"> <Link to='/'>WaxStax</Link> </h1>
             <Link to="/artists">Artists</Link>
             <Link to="/me">My Profile</Link>
-            <form className="mt 5 text-center" onSubmit={e=>logOut(e)}>
+            <Form className="mt 5 text-center" onSubmit={e=>logOut(e)}>
                 <h3> Hello, {user.username} </h3>
                 <input type="submit" value="Log Out"/>
                 <SearchBar results={results} />
-            </form>
+            </Form>
             </Stack>
             
         </Navbar>

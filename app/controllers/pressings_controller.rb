@@ -39,6 +39,7 @@ class PressingsController < ApplicationController
   # DELETE /pressings/1
   def destroy
     @pressing.destroy
+    render json: {}
   end
 
   private

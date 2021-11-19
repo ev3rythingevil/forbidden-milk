@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import Stack from 'react-bootstrap/Stack'
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 import { Routes, Link, Route, useNavigate } from "react-router-dom";
 import ArtistProfile from './ArtistProfile'
 
@@ -59,7 +60,7 @@ function SearchBar({results}){
         .map((result, index) => {
             return(
             <div key={result.id}>
-                <Card className="text-center" style={{ width: '18rem' }} className="text-center">
+                <Card className="text-center" style={{ width: '20rem' }, { height: '20rem'}} className="text-center">
                 <h2>
                 <Link to={`/artists/${result.id}`}>{result.name}</Link>
                 <br/>
@@ -68,10 +69,14 @@ function SearchBar({results}){
                     </h5>
                 </h2>
                 
-                <div style={{ width: '18rem' }}>{result.records.map(record =>
+                <div style={{ width: '20rem' }}>{result.records.map(record =>
                     <ul>
-                     <p><strong>{record.title} ({record.year})</strong>
-                     <button onClick={e =>handleClick(e, record)}>Add to my collection!</button>
+                     <p className="text-center">
+                         <strong>{record.title} 
+                         <br/>
+                         ({record.year})</strong>
+                         <br/>
+                     <Button variant="outline-success" onClick={e =>handleClick(e, record)}>Add to my collection!</Button>
                      </p>
                     </ul>
                         )}
