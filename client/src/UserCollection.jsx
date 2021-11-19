@@ -4,8 +4,6 @@ import Button from 'react-bootstrap/Button'
 
 function UserCollection({record , pressings}){
     
-    console.log(record)
-    console.log(pressings)
     const pressing = pressings.filter(p => p.record_id === record.id)
     
     const deletePressing = (e, pressing) => {
@@ -14,7 +12,7 @@ function UserCollection({record , pressings}){
                  method: "DELETE",
             })
             .then((r) => r.json()) 
-            .then((data) => console.log(data));
+            .then((data) => window.location.reload(true));
     }
     
     return (

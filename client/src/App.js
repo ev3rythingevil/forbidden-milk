@@ -17,6 +17,7 @@ function App() {
 const [user, setUser] = useState([])
 const [loggedIn, setLoggedIn] = useState(false)
 const [results, setResults] = useState([])
+
 const history = useNavigate()
 // useEffects/inits
 useEffect(()=> {
@@ -65,7 +66,29 @@ function doLogOut(){
     history('/')
   })
 }
+
+const createPressing = (record) => {
+  fetch('http://localhost:4000/pressings', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          record_id: record.id,
+          weight: 180,
+          color: 'unknown',
+          label: 'unknown'
+      })
+  }) 
+      .then(r => r.json())
+      .then(data => {
+        window.location.reload(true);
+      })
+      .catch((error)=> {
+          console.error('Error:', error)
+      })
   
+}  
 
 
   if (loggedIn)
@@ -73,7 +96,8 @@ function doLogOut(){
    
     <div className='bg-light-border'>
       <Container className="p-3">
-      <NavBar userLogIn={userLogIn} 
+      <NavBar userLogIn={userLogIn}
+       createPressing={createPressing} 
       loggedIn={loggedIn} 
       user={user} 
       doLogOut={doLogOut}
@@ -93,6 +117,7 @@ function doLogOut(){
     return (
       <div>
         <NavBar userLogIn={userLogIn} 
+         createPressing={createPressing}
         loggedIn={loggedIn} 
         results={results}/>
          <Routes>
