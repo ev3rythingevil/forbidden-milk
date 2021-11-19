@@ -2,7 +2,7 @@ import { useState } from 'react'
 import SearchBar from './SearchBar'
 import { Navbar, Stack, Form } from 'react-bootstrap'
 import { Link, Outlet } from 'react-router-dom'
-function NavBar({userLogIn, loggedIn, user, doLogOut, results, createPressing}){
+function NavBar({userLogIn, loggedIn, user, doLogOut, results, createPressing, addToCollection}){
     
     const [saveData, setSaveData] = useState({})
     
@@ -35,7 +35,7 @@ function NavBar({userLogIn, loggedIn, user, doLogOut, results, createPressing}){
             <Form className="mt 5 text-center" onSubmit={e=>logOut(e)}>
                 <h3> Hello, {user.username} </h3>
                 <input type="submit" value="Log Out"/>
-                <SearchBar results={results}  createPressing={createPressing} />
+                <SearchBar results={results}  createPressing={createPressing} addToCollection={addToCollection} />
             </Form>
             </Stack>
             
@@ -60,7 +60,7 @@ function NavBar({userLogIn, loggedIn, user, doLogOut, results, createPressing}){
                 <input type="text" name="password" onChange={(e)=> handleChange(e)}/>
             </label>
             <input type="submit" value="Log In"/>
-            <SearchBar createPressing={createPressing} results={results}/>
+            <SearchBar createPressing={createPressing} addToCollection={addToCollection} results={results}/>
         </form>
         </Stack>
         </Navbar>
