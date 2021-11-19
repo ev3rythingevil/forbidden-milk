@@ -1,9 +1,9 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import Stack from 'react-bootstrap/Stack'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Image from 'react-bootstrap/Image'
-import { Routes, Link, Route, useNavigate } from "react-router-dom";
+import {Link} from "react-router-dom";
 import ArtistProfile from './ArtistProfile'
 
 function SearchBar({results , createPressing, addToCollection, setSelectedArtist}){
@@ -17,7 +17,7 @@ function SearchBar({results , createPressing, addToCollection, setSelectedArtist
 
     const handleClick = (e, record) => {
         e.preventDefault()
-        //createPressing(record)
+        createPressing(record)
         // console.log(pressingInfo)
         addToCollection(record)   
     }

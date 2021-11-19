@@ -3,6 +3,7 @@ import Figure from 'react-bootstrap/Figure'
 import Card from 'react-bootstrap/Card'
 import Stack from 'react-bootstrap/Stack'
 
+
 function ArtistProfile({results, selectedArtist}){
     const [artistInfo, setArtistInfo] = useState([])
 

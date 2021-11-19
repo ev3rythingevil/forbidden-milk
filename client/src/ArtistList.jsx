@@ -5,7 +5,11 @@ function ArtistList({results}){
 
 return(
     <>
-    {results.map(a => <Link to={`/artists/${a.id}`}>{a.name}</Link>)}
+    {results.map(a => 
+        <li>
+        <Link to={`/artists/${a.id}`}>{a.name}</Link>
+        </li>
+        )}
     </>
 )
 }
