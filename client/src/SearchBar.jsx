@@ -37,12 +37,13 @@ function SearchBar({results , createPressing, addToCollection}){
             </label>
         </form>
         { searchData === "" ? null : 
-        <Stack direction="horizontal" gap={1}>
+        <Stack direction="horizontal" gap={3} className="align-items-center justify-content-center">
         {results.filter((i) => i.name.toLowerCase().includes(searchData))
         .map((result, index) => {
             return(
-            <div key={result.id}>
-                <Card className="text-center" style={{ width: '20rem' }, { height: '20rem'}} className="text-center">
+                <Card className="display-flex">
+            <div key={result.id} style={{display: "flex"}}>
+            
                 <h2>
                 <Link to={`/artists/${result.id}`} component={ArtistProfile}>{result.name}</Link>
                 <br/>
@@ -51,23 +52,23 @@ function SearchBar({results , createPressing, addToCollection}){
                     </h5>
                 </h2>
                 
-                <div style={{ width: '20rem' }}>{result.records.map(record =>
+                <div style={{display: "flex"}}>{result.records.map(record =>
                     <ul>
-                     <p className="text-center">
+                     <p className="justify-content-center">
                          <Image src={record.image} thumbnail style={{ width: '10rem' }, { height: '10rem'}}/>
                          <br/>
                          <strong>{record.title} 
                          <br/>
                          ({record.year})</strong>
                          <br/>
-                     <Button variant="outline-success" onClick={e =>handleClick(e, record)}>Add to my collection!</Button>
+                         <Button variant="outline-success" onClick={e =>handleClick(e, record)}>Add to my collection!</Button>
                      </p>
                     </ul>
                         )}
                   
                 </div>
-                </Card>
-            </div>    
+            </div>
+            </Card>    
             )
         })
         }
