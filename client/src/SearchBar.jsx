@@ -6,7 +6,7 @@ import Image from 'react-bootstrap/Image'
 import { Routes, Link, Route, useNavigate } from "react-router-dom";
 import ArtistProfile from './ArtistProfile'
 
-function SearchBar({results}){
+function SearchBar({results , createPressing}){
     const [searchData, setSearchData] = useState("")
 
 
@@ -20,28 +20,7 @@ function SearchBar({results}){
         createPressing(record)   
     }
 
-    const createPressing = (record) => {
-        fetch('http://localhost:4000/pressings', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                record_id: record.id,
-                weight: 180,
-                color: 'unknown',
-                label: 'unknown'
-            })
-        }) 
-            .then(r => r.json())
-            .then(data => {
-                console.log(data)
-            })
-            .catch((error)=> {
-                console.error('Error:', error)
-            })
-        
-    }
+   
 
     return(
         <>
